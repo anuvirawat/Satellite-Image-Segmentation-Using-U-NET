@@ -130,10 +130,10 @@ def compute_NDVI(nir,image_r):
     image_r = image_r.astype(np.float64)
     
     # Denominator should not be zero
-    x_s,y_s = np.where( (nir + image_r) != 0.  )
+    x_s,y_s = np.where( (nir + image_r) != 0 )
     ndvi[x_s,y_s] = ((nir[x_s,y_s] - image_r[x_s,y_s]) / (image_r[x_s,y_s] + nir[x_s,y_s]))*1023.5 + 1023.5
     
-    x_s,y_s = np.where( (nir + image_r) == 0.  )
+    x_s,y_s = np.where( (nir + image_r) == 0 )
     ndvi[x_s,y_s] = 0
     
     # Rescaling the values between 0 to 1
@@ -142,7 +142,7 @@ def compute_NDVI(nir,image_r):
     
     x_s,y_s = np.where(ndvi < 0)
     ndvi[x_s,y_s] = 0
-    
+    print(ndvi)
     return ndvi
 
 def compute_NDWI(nir,image_g):
@@ -184,81 +184,80 @@ def compute_NDWI(nir,image_g):
     
     return ndwi
 
-def compute_CCCI(nir,re,image_r):
+	
+def compute_BAI(cb,re):
 
-	''' Computes Canopy Chlorophyll Content Index.
-
-	Description :
-		CCCI = ( (NIR - RED_EDGE)/(NIR + RED_EDGE) )/( (NIR - RED)/(NIR + RED) )
+    '''computes built up index.
+    Description :
+		CCCI = ( (COASTAL_BAND - RED_EDGE)/(COASTAL_BAND + RED_EDGE) ) )
 
 	Arguments :
-		nir     -- np.array.
-                   Near Infrared Band
+	coastal_band     -- np.array.
+                  
+        re      -- np.array.
+                   Red Edge
+       
+    Returns :
+        BAI -- np.array.
+                Built up index'''
+
+    
+    bai = np.zeros(shape = cb.shape,dtype = np.float64)
+    
+    cb = cb.astype(np.float64)
+    re = re.astype(np.float64)
+        
+    x_s,y_s = np.where( (re + cb) != 0 )
+    bai[x_s,y_s] = ((cb[x_s,y_s] - re[x_s,y_s])/(cb[x_s,y_s] + re[x_s,y_s]))*1023.5 + 1023.5
+    
+    x_s,y_s = np.where( (re + cb) == 0 )
+    bai[x_s,y_s] = 0
+    
+    x_s,y_s = np.where( bai > 2047 )
+    bai[x_s,y_s] = 2047
+    
+    x_s,y_s = np.where( bai< 0 )
+    bai[x_s,y_s] = 0    
+    
+    return bai
+
+def compute_REI(cb,re):
+
+    '''  REI= Road extraction index.
+
+Description :
+	    REI = ( (RED_EDGE-COASTAL_BAND)/(RED_EDGE+COASTAL_BAND) )
+
+	Arguments :
+        coastal_band    -- np.array.
+                   
         re      -- np.array.
                    Red Edge
         image_r -- np.array.
                    Red Band
     Returns :
-        CCCI -- np.array.
-                Canopy Chlorophyll Content Index
-	'''
-	ccci = np.zeros(shape = nir.shape,dtype = np.float64)
-    
-	nir = nir.astype(np.float64)
-	re =  re.astype(np.float64)
-	image_r = image_r.astype(np.float64)
-    
-	# Denominator should not be 0  
-	x_s,y_s = np.where( ((nir + re) == 0) | ((nir - image_r) == 0) | ((nir + image_r) == 0) )  
-	ccci[x_s,y_s] = 0
-    
-	x_s,y_s = np.where( ((nir + re) != 0) & ((nir - image_r) != 0) & ((nir + image_r) != 0) )
-	ccci[x_s,y_s] = ( ((nir[x_s,y_s] - re[x_s,y_s]) / (nir[x_s,y_s] + re[x_s,y_s]) ) /( (nir[x_s,y_s] - image_r[x_s,y_s]) / (nir[x_s,y_s] + image_r[x_s,y_s]) ) )*1023.5 + 1023.5
-    
-	# Rescaling the values between 0 and 1
-	x_s,y_s = np.where(ccci > 2047)
-	ccci[x_s,y_s] = 2047
-    
-	x_s,y_s = np.where(ccci < 0)
-	ccci[x_s,y_s] = 0
-    
-	return ccci
+        REI -- np.array.
+                road extraction index'''
 
-def compute_SAVI(nir,image_r):
-    ''' Soil Adjusted Vegetation Index.
-
-    Description :
-
-        SAVI = (NIR - RED)/(NIR + RED)
-
-    Arguments :
-        nir     -- np.array.
-                   Near Infrared Band
-        image_r -- np.array.
-                   Red Band
-    Returns :
-        savi -- np.array.
-                Soil Adjusted Vegetation Index
-    '''
-
-    savi = np.zeros(shape = nir.shape,dtype = np.float64)
     
-    nir = nir.astype(np.float64)
-    image_r = image_r.astype(np.float64)
+    rei = np.zeros(shape = cb.shape,dtype = np.float64)
+    
+    cb = cb.astype(np.float64)
+    re = re.astype(np.float64)
         
-    x_s,y_s = np.where( (nir + image_r) != 0 )
-    savi[x_s,y_s] = ((nir[x_s,y_s] - image_r[x_s,y_s])/(nir[x_s,y_s] +image_r[x_s,y_s]))*1023.5 + 1023.5
+    x_s,y_s = np.where( (re + cb) != 0 )
+    rei[x_s,y_s] = ((re[x_s,y_s] - cb[x_s,y_s])/(cb[x_s,y_s] + re[x_s,y_s]))*1023.5 + 1023.5
     
-    x_s,y_s = np.where( (nir + image_r) == 0 )
-    savi[x_s,y_s] = 0
+    x_s,y_s = np.where( (re + cb) == 0 )
+    rei[x_s,y_s] = 0
     
-    x_s,y_s = np.where( savi > 2047 )
-    savi[x_s,y_s] = 2047
+    x_s,y_s = np.where( rei > 2047 )
+    rei[x_s,y_s] = 2047
     
-    x_s,y_s = np.where( savi < 0 )
-    savi[x_s,y_s] = 0    
+    x_s,y_s = np.where( rei< 0 )
+    rei[x_s,y_s] = 0    
     
-    return savi
+    return rei
 
 def give_image_sandwhich(imageId):
     ''' Returns the image stack of 14 channels. '''
@@ -286,6 +285,8 @@ def give_image_sandwhich(imageId):
 
     nir = img_m[:,:,6]
     re  = img_m[:,:,5]
+    cb  = img_m[:,:,0]
+    nir2= img_m[:,:,7]
     
     # Enhanced vegetation Index
     evi  = np.expand_dims(compute_EVI(nir,image_r,image_b),2) # Done 
@@ -295,17 +296,17 @@ def give_image_sandwhich(imageId):
     
     # Normalized Difference Vegetation Index    
     ndvi = np.expand_dims(compute_NDVI(nir,image_r), 2) # Done
+
+    #Building extraction index
+    bai = np.expand_dims(compute_BAI(cb,re),2) #Done
     
-    # Canopy Chlorophyll Content Index
-    ccci = np.expand_dims(compute_CCCI(nir,re,image_r),2)       
-    
-    # Soil Adjusted Vegetation Index
-    savi = np.expand_dims(compute_SAVI(nir,image_r), 2)
-    
+    #Road  extraction index
+    rei = np.expand_dims(compute_REI(cb,re),2) #Done
+
     # exclude the red, green and blue channels of the M-band    
     img_m_concs = np.concatenate((np.expand_dims(img_m[:,:,0],2),np.expand_dims(img_m[:,:,3],2),np.expand_dims(img_m[:,:,5],2),np.expand_dims(img_m[:,:,6],2),np.expand_dims(img_m[:,:,7],2)),axis = 2)
     
-    new_img = np.concatenate((img_P,img_rgb,img_m_concs,evi,ndwi,ndvi,savi,ccci), axis = 2)
+    new_img = np.concatenate((img_P,img_rgb,img_m_concs,evi,ndwi,ndvi,bai,rei), axis = 2)
     
     return new_img
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 # -*- coding: utf-8 -*-
 """
 Created on Tue Jun 19 10:07:28 2018
@@ -103,88 +103,88 @@ def initialize_parameters():
     '''
     
     l_11 = constant_initializer(32)
-    left_1_1_conv = tf.get_variable(name = "Road_tar_left_1_1_conv",shape = (3,3,9,32),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    left_1_1_conv_bias = tf.get_variable(name = "Road_tar_left_1_1_conv_bias",shape = (32),dtype = tf.float32,initializer = tf.constant_initializer(l_11),trainable = True)
+    left_1_1_conv = tf.get_variable(name = "Bldg_left_1_1_conv",shape = (3,3,9,32),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    left_1_1_conv_bias = tf.get_variable(name = "Bldg_left_1_1_conv_bias",shape = (32),dtype = tf.float32,initializer = tf.constant_initializer(l_11),trainable = True)
     
     l_12 = constant_initializer(32)
-    left_1_2_conv = tf.get_variable(name = "Road_tar_left_1_2_conv",shape = (3,3,32,32),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    left_1_2_conv_bias = tf.get_variable(name = "Road_tar_left_1_2_conv_bias",shape = (32),dtype = tf.float32,initializer = tf.constant_initializer(l_12),trainable = True)
+    left_1_2_conv = tf.get_variable(name = "Bldg_left_1_2_conv",shape = (3,3,32,32),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    left_1_2_conv_bias = tf.get_variable(name = "Bldg_left_1_2_conv_bias",shape = (32),dtype = tf.float32,initializer = tf.constant_initializer(l_12),trainable = True)
 
     l_21 = constant_initializer(64)
-    left_2_1_conv = tf.get_variable(name = "Road_tar_left_2_1_conv",shape = (3,3,32,64),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    left_2_1_conv_bias = tf.get_variable(name = "Road_tar_left_2_1_conv_bias",shape = (64),dtype = tf.float32,initializer = tf.constant_initializer(l_21),trainable = True)
+    left_2_1_conv = tf.get_variable(name = "Bldg_left_2_1_conv",shape = (3,3,32,64),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    left_2_1_conv_bias = tf.get_variable(name = "Bldg_left_2_1_conv_bias",shape = (64),dtype = tf.float32,initializer = tf.constant_initializer(l_21),trainable = True)
     
     l_22 = constant_initializer(64)
-    left_2_2_conv = tf.get_variable(name = "Road_tar_left_2_2_conv",shape = (3,3,64,64),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    left_2_2_conv_bias = tf.get_variable(name = "Road_tar_left_2_2_conv_bias",shape = (64),dtype = tf.float32,initializer = tf.constant_initializer(l_22),trainable = True)    
+    left_2_2_conv = tf.get_variable(name = "Bldg_left_2_2_conv",shape = (3,3,64,64),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    left_2_2_conv_bias = tf.get_variable(name = "Bldg_left_2_2_conv_bias",shape = (64),dtype = tf.float32,initializer = tf.constant_initializer(l_22),trainable = True)    
     
     l_31 = constant_initializer(128)
-    left_3_1_conv = tf.get_variable(name = "Road_tar_left_3_1_conv",shape = (3,3,64,128),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    left_3_1_conv_bias = tf.get_variable(name = "Road_tar_left_3_1_conv_bias",shape = (128),dtype = tf.float32,initializer = tf.constant_initializer(l_31),trainable = True)
+    left_3_1_conv = tf.get_variable(name = "Bldg_left_3_1_conv",shape = (3,3,64,128),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    left_3_1_conv_bias = tf.get_variable(name = "Bldg_left_3_1_conv_bias",shape = (128),dtype = tf.float32,initializer = tf.constant_initializer(l_31),trainable = True)
 
     l_32 = constant_initializer(128)
-    left_3_2_conv = tf.get_variable(name = "Road_tar_left_3_2_conv",shape = (3,3,128,128),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    left_3_2_conv_bias = tf.get_variable(name = "Road_tar_left_3_2_conv_bias",shape = (128),dtype = tf.float32,initializer = tf.constant_initializer(l_32),trainable = True)
+    left_3_2_conv = tf.get_variable(name = "Bldg_left_3_2_conv",shape = (3,3,128,128),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    left_3_2_conv_bias = tf.get_variable(name = "Bldg_left_3_2_conv_bias",shape = (128),dtype = tf.float32,initializer = tf.constant_initializer(l_32),trainable = True)
     
     l_41 = constant_initializer(256)    
-    left_4_1_conv = tf.get_variable(name = "Road_tar_left_4_1_conv",shape = (3,3,128,256),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    left_4_1_conv_bias = tf.get_variable(name = "Road_tar_left_4_1_conv_bias",shape = (256),dtype = tf.float32,initializer = tf.constant_initializer(l_41),trainable = True)    
+    left_4_1_conv = tf.get_variable(name = "Bldg_left_4_1_conv",shape = (3,3,128,256),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    left_4_1_conv_bias = tf.get_variable(name = "Bldg_left_4_1_conv_bias",shape = (256),dtype = tf.float32,initializer = tf.constant_initializer(l_41),trainable = True)    
     
     l_42 = constant_initializer(256)    
-    left_4_2_conv = tf.get_variable(name = "Road_tar_left_4_2_conv",shape = (3,3,256,256),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    left_4_2_conv_bias = tf.get_variable(name = "Road_tar_left_4_2_conv_bias",shape = (256),dtype = tf.float32,initializer = tf.constant_initializer(l_42),trainable = True)        
+    left_4_2_conv = tf.get_variable(name = "Bldg_left_4_2_conv",shape = (3,3,256,256),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    left_4_2_conv_bias = tf.get_variable(name = "Bldg_left_4_2_conv_bias",shape = (256),dtype = tf.float32,initializer = tf.constant_initializer(l_42),trainable = True)        
     
     c_51 = constant_initializer(512) 
-    centre_5_1_conv = tf.get_variable(name = "Road_tar_centre_5_1_conv",shape = (3,3,256,512),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    centre_5_1_conv_bias = tf.get_variable(name = "Road_tar_centre_5_1_conv_bias",shape = (512),dtype = tf.float32,initializer = tf.constant_initializer(c_51),trainable = True)    
+    centre_5_1_conv = tf.get_variable(name = "Bldg_centre_5_1_conv",shape = (3,3,256,512),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    centre_5_1_conv_bias = tf.get_variable(name = "Bldg_centre_5_1_conv_bias",shape = (512),dtype = tf.float32,initializer = tf.constant_initializer(c_51),trainable = True)    
     
     c_52 = constant_initializer(512)
-    centre_5_2_conv = tf.get_variable(name = "Road_tar_centre_5_2_conv",shape = (3,3,512,512),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    centre_5_2_conv_bias = tf.get_variable(name = "Road_tar_centre_5_2_conv_bias",shape = (512),dtype = tf.float32,initializer = tf.constant_initializer(c_52),trainable = True)
+    centre_5_2_conv = tf.get_variable(name = "Bldg_centre_5_2_conv",shape = (3,3,512,512),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    centre_5_2_conv_bias = tf.get_variable(name = "Bldg_centre_5_2_conv_bias",shape = (512),dtype = tf.float32,initializer = tf.constant_initializer(c_52),trainable = True)
 
     weights_1 = np.transpose(get_bilinear_filter([2,2,512,128],2),(1,0,3,2))
-    centre_5_3_deconv = tf.get_variable(name = "Road_tar_centre_5_3_deconv",shape = (2,2,128,512),dtype = tf.float32,initializer = tf.constant_initializer(value=weights_1,dtype=tf.float32),trainable = False)         
+    centre_5_3_deconv = tf.get_variable(name = "Bldg_centre_5_3_deconv",shape = (2,2,128,512),dtype = tf.float32,initializer = tf.constant_initializer(value=weights_1,dtype=tf.float32),trainable = False)         
 
     r_41 = constant_initializer(256)
-    right_4_1_conv = tf.get_variable(name = "Road_tar_right_4_1_conv",shape = (3,3,128 + 256,256),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    right_4_1_conv_bias = tf.get_variable(name = "Road_tar_right_4_1_conv_bias",shape = (256),dtype = tf.float32,initializer = tf.constant_initializer(r_41),trainable = True)
+    right_4_1_conv = tf.get_variable(name = "Bldg_right_4_1_conv",shape = (3,3,128 + 256,256),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    right_4_1_conv_bias = tf.get_variable(name = "Bldg_right_4_1_conv_bias",shape = (256),dtype = tf.float32,initializer = tf.constant_initializer(r_41),trainable = True)
     
     r_42 = constant_initializer(256)    
-    right_4_2_conv = tf.get_variable(name = "Road_tar_right_4_2_conv",shape = (3,3,256,256),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    right_4_2_conv_bias = tf.get_variable(name = "Road_tar_right_4_2_conv_bias",shape = (256),dtype = tf.float32,initializer = tf.constant_initializer(r_42),trainable = True)
+    right_4_2_conv = tf.get_variable(name = "Bldg_right_4_2_conv",shape = (3,3,256,256),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    right_4_2_conv_bias = tf.get_variable(name = "Bldg_right_4_2_conv_bias",shape = (256),dtype = tf.float32,initializer = tf.constant_initializer(r_42),trainable = True)
 
     weights_2 = np.transpose(get_bilinear_filter([2,2,256,256],2),(1,0,3,2))  
-    right_4_3_deconv = tf.get_variable(name = "Road_tar_right_4_3_deconv",shape = (2,2,256,256),dtype = tf.float32,initializer = tf.constant_initializer(value=weights_2,dtype=tf.float32),trainable = False)         
+    right_4_3_deconv = tf.get_variable(name = "Bldg_right_4_3_deconv",shape = (2,2,256,256),dtype = tf.float32,initializer = tf.constant_initializer(value=weights_2,dtype=tf.float32),trainable = False)         
     
     r_31 = constant_initializer(128)    
-    right_3_1_conv = tf.get_variable(name = "Road_tar_right_3_1_conv",shape = (3,3,128 + 256,128),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    right_3_1_conv_bias = tf.get_variable(name = "Road_tar_right_3_1_conv_bias",shape = (128),dtype = tf.float32,initializer = tf.constant_initializer(r_31),trainable = True)
+    right_3_1_conv = tf.get_variable(name = "Bldg_right_3_1_conv",shape = (3,3,128 + 256,128),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    right_3_1_conv_bias = tf.get_variable(name = "Bldg_right_3_1_conv_bias",shape = (128),dtype = tf.float32,initializer = tf.constant_initializer(r_31),trainable = True)
     
     r_32 = constant_initializer(128)    
-    right_3_2_conv = tf.get_variable(name = "Road_tar_right_3_2_conv",shape = (3,3,128,128),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    right_3_2_conv_bias = tf.get_variable(name = "Road_tar_right_3_2_conv_bias",shape = (128),dtype = tf.float32,initializer = tf.constant_initializer(r_32),trainable = True)
+    right_3_2_conv = tf.get_variable(name = "Bldg_right_3_2_conv",shape = (3,3,128,128),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    right_3_2_conv_bias = tf.get_variable(name = "Bldg_right_3_2_conv_bias",shape = (128),dtype = tf.float32,initializer = tf.constant_initializer(r_32),trainable = True)
 
     weights_3 = np.transpose(get_bilinear_filter([2,2,128,128],2),(1,0,3,2))    
-    right_3_3_deconv = tf.get_variable(name  = "Road_tar_right_3_3_deconv", shape = (2,2,128,128),dtype = tf.float32,initializer = tf.constant_initializer(value=weights_3,dtype=tf.float32),trainable = False)
+    right_3_3_deconv = tf.get_variable(name  = "Bldg_right_3_3_deconv", shape = (2,2,128,128),dtype = tf.float32,initializer = tf.constant_initializer(value=weights_3,dtype=tf.float32),trainable = False)
 
     r_21 = constant_initializer(64)
-    right_2_1_conv = tf.get_variable(name = "Road_tar_right_2_1_conv",shape = (3,3,128 + 64,64),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    right_2_1_conv_bias = tf.get_variable(name = "Road_tar_right_2_1_conv_bias",shape = (64),dtype = tf.float32,initializer = tf.constant_initializer(r_21),trainable = True)
+    right_2_1_conv = tf.get_variable(name = "Bldg_right_2_1_conv",shape = (3,3,128 + 64,64),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    right_2_1_conv_bias = tf.get_variable(name = "Bldg_right_2_1_conv_bias",shape = (64),dtype = tf.float32,initializer = tf.constant_initializer(r_21),trainable = True)
     
     r_22 = constant_initializer(64)    
-    right_2_2_conv = tf.get_variable(name = "Road_tar_right_2_2_conv",shape = (3,3,64,64),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    right_2_2_conv_bias = tf.get_variable(name = "Road_tar_right_2_2_conv_bias",shape = (64),dtype = tf.float32,initializer =tf.constant_initializer(r_22),trainable = True)
+    right_2_2_conv = tf.get_variable(name = "Bldg_right_2_2_conv",shape = (3,3,64,64),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    right_2_2_conv_bias = tf.get_variable(name = "Bldg_right_2_2_conv_bias",shape = (64),dtype = tf.float32,initializer =tf.constant_initializer(r_22),trainable = True)
 
     weights_4 = np.transpose(get_bilinear_filter([2,2,64,64],2),(1,0,3,2))  
-    right_2_3_deconv = tf.get_variable(name = "Road_tar_right_2_3_deconv",shape = (2,2,64,64),dtype = tf.float32,initializer = tf.constant_initializer(value=weights_4,dtype=tf.float32),trainable = False)
+    right_2_3_deconv = tf.get_variable(name = "Bldg_right_2_3_deconv",shape = (2,2,64,64),dtype = tf.float32,initializer = tf.constant_initializer(value=weights_4,dtype=tf.float32),trainable = False)
 
     r_11 = constant_initializer(32)
-    right_1_1_conv = tf.get_variable(name = "Road_tar_right_1_1_conv",shape = (9,9,64+32,32),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    right_1_1_conv_bias = tf.get_variable(name = "Road_tar_right_1_1_conv_bias",shape = (32),dtype = tf.float32,initializer = tf.constant_initializer(r_11),trainable = True)
+    right_1_1_conv = tf.get_variable(name = "Bldg_right_1_1_conv",shape = (9,9,64+32,32),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    right_1_1_conv_bias = tf.get_variable(name = "Bldg_right_1_1_conv_bias",shape = (32),dtype = tf.float32,initializer = tf.constant_initializer(r_11),trainable = True)
     
     r_12 = constant_initializer(1)    
-    right_1_2_conv = tf.get_variable(name = "Road_tar_right_1_2_conv",shape = (9,9,32,1),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
-    right_1_2_conv_bias = tf.get_variable(name = "Road_tar_right_1_2_conv_bias",shape = (1),dtype = tf.float32,initializer = tf.constant_initializer(r_12),trainable = True)
+    right_1_2_conv = tf.get_variable(name = "Bldg_right_1_2_conv",shape = (9,9,32,1),dtype = tf.float32,initializer = tf.keras.initializers.he_uniform(),trainable = True)
+    right_1_2_conv_bias = tf.get_variable(name = "Bldg_right_1_2_conv_bias",shape = (1),dtype = tf.float32,initializer = tf.constant_initializer(r_12),trainable = True)
     
     weight_parameters = {}
 
@@ -347,6 +347,7 @@ def forward_prop(X,weight_parameters,bool_train = True) :
             conv1 = tf.nn.leaky_relu (conv1,name = "activation")
             variable_summaries_weights_biases(left_1_1_conv)
             variable_summaries_weights_biases(left_1_1_conv_bias)
+        
     
         with tf.name_scope("Conv_2") :    
             conv2 = tf.nn.conv2d(tf.pad(conv1,paddings = [[0,0],[112,112],[112,112],[0,0]],mode = 'SYMMETRIC'), left_1_2_conv, (1,3,3,1), padding = "VALID",name = "convolve")
@@ -459,6 +460,8 @@ def forward_prop(X,weight_parameters,bool_train = True) :
         with tf.name_scope("Deconvolve") : 
             de_conv10  = tf.nn.conv2d_transpose(conv10,centre_5_3_deconv, output_shape = (tf.shape(X)[0],de_conv10_obj.output_h,de_conv10_obj.output_w,de_conv10_obj.output_d), strides = (1,2,2,1),padding = 'VALID',name = "deconv")
             variable_summaries_weights_biases(centre_5_3_deconv)   
+            print(de_conv10.shape)
+            print(conv8.shape)
 
     ### Right Branch 4th layer ###
     
@@ -631,7 +634,7 @@ def compute_jaccard_cost(Y,Z3,batch_size) :
 
 ############################################# MODEL BUILDING #############################################
 
-def model(img_rows,img_cols,num_channels,learning = 0.003,num_epochs = 30,batch_size = 16):
+def model(img_rows,img_cols,num_channels,learning = 0.003,num_epochs = 50,batch_size = 16):
 
     # Tensorflow Graph
     X,Y = create_placeholders(img_rows,img_cols,num_channels)
@@ -661,7 +664,7 @@ def model(img_rows,img_cols,num_channels,learning = 0.003,num_epochs = 30,batch_
     merged = tf.summary.merge_all()
     with tf.Session() as sess:
 
-        train_writer = tf.summary.FileWriter("Summaries/Road_tar",sess.graph)
+        train_writer = tf.summary.FileWriter("Summaries/Bldg",sess.graph)
         sess.run(init)
         
         jaccard_list = []
@@ -677,10 +680,10 @@ def model(img_rows,img_cols,num_channels,learning = 0.003,num_epochs = 30,batch_
             for i in range(1500) :
                 
                 
-                with open("./Data_training/Road/train" + "_" + str(i) + "_" + ".pkl","rb") as f :
+                with open("./Data_training/Bldg/train" + "_" + str(i) + "_" + ".pkl","rb") as f :
                     X_input = pickle.load(f)
                 
-                with open("./Data_training/Road/test" + "_" + str(i) + "_" + ".pkl","rb") as f :
+                with open("./Data_training/Bldg/test" + "_" + str(i) + "_" + ".pkl","rb") as f :
                     Y_input = pickle.load(f)
 
                 if X_input is None or Y_input is None :
@@ -688,6 +691,8 @@ def model(img_rows,img_cols,num_channels,learning = 0.003,num_epochs = 30,batch_
                     return None
 
                 X_input = X_input/2047
+                list=[0,1,2,3,4,5,6,7,8,12]
+
                 
                 if ((epoch%1 == 0) and (counting == 1499)):
                     _,batch_jaccard,summary = sess.run([optimizer,Jaccard,merged], feed_dict = {X:X_input[:,:,:,(0,1,2,3,4,5,6,7,12)],Y:Y_input})                
@@ -718,7 +723,7 @@ def model(img_rows,img_cols,num_channels,learning = 0.003,num_epochs = 30,batch_
                     
                     highest_jaccard = jaccards
                 
-                    path = os.path.join(os.getcwd(),'Parameters/Road_tar/track-model.ckpt')
+                    path = os.path.join(os.getcwd(),'Parameters/Bldg/track-model.ckpt')
                     saver.save(sess,path,global_step=epoch)   
         
         train_writer.close()
